@@ -14,18 +14,19 @@ provided by the Arduino through a 74HC595 shift register.
    
 ## SUPPORTED CHARACTERS
 ASCII characters 32..127d are supported.                                                                                                     
-Character codes 96-126 are assigned to cyrillic characters instead of `,lower latin chars and {|}~.                                          
+Character codes 96-126 are assigned to cyrillic characters instead of `, lower latin chars and { | } ~.                                          
 Code 127 defines a fully black box.                                                                                                          
                                                                                                                                                 
-   Code       32    33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63                                
-   Character  Space !  "  #  Ãƒâ€šÃ‚Â¤  %  &  '  (  )  *  +  ,  -  .  /  0  1  2  3  4  5  6  7  8  9  :  ;  <  =  >  ?                                 
+```
+Code       32    33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63                                
+Character  Space !  "  #  ¤  %  &  '  (  )  *  +  ,  -  .  /  0  1  2  3  4  5  6  7  8  9  :  ;  <  =  >  ?                                 
                                                                                                                                                 
-   Code       64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95                                   
-   Character  @  A  B  C  D  E  F  G  H  I  J  K  L  M  N  O  P  Q  R  S  T  U  V  W  X  Y  Z  [  \  ]  ^  _                                    
+Code       64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95                                   
+Character  @  A  B  C  D  E  F  G  H  I  J  K  L  M  N  O  P  Q  R  S  T  U  V  W  X  Y  Z  [  \  ]  ^  _                                    
                                                                                                                                                 
-   Code       96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127       
-   Character  cyrillic characters
-   
+Code       96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127       
+Character  Ю  А  Б  Ц  Д   Е   Ф   Г   Х   И   Й   К   Л   М   Н   О   П   Я   Р   С   Т   У   Ж   В   Ь   Ы   З   Ш   Э   Щ   Ч   █
+```   
    
 ## CURSOR (optional)
 MS6205 can show a black box at the cursor's current position.
