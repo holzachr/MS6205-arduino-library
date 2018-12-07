@@ -1,0 +1,18 @@
+{
+    "name": "MS6205",
+    "keywords": "lcd, MS6205",
+    "description": "Library for controlling a MS6205 type vintage soviet 160 character display",
+    "authors": {
+        "name": "Christian Holzapfel",
+        "url": "https://github.com/holzachr"
+    },
+    "repository":
+    {
+      "type": "git",
+      "url": "https://github.com/holzachr/MS6205-arduino-library"
+    },
+    "version": "1.0.0",
+    "exclude": ["def", "thirdparty libraries", "utility/docs", "doxygen*"],
+    "frameworks": "arduino",
+    "platforms": "espressif8266"
+}
