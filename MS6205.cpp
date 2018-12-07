@@ -1,7 +1,7 @@
 /*
   MS6205.h - Library for controlling a MS6205 vintage soviet character display.
   
-  Copyright by Christian Holzapfel, December 2, 2018.
+  Copyright 2018 Christian Holzapfel
   
   Released under the MIT License.
   
@@ -105,16 +105,16 @@ char const bigDigits[10][BIG_DIGIT_HEIGHT][BIG_DIGIT_WIDTH] =   // Matrix defini
 /// \param[in]  shiftRegisterDataPin   CPU pin connected to 74HC595 shift register "data" pin 14
 /// \param[in]  setCursorPin           CPU pin connected to MS6205 display "set cursor" pin 16A
 /// \param[in]  setCharacterPin        CPU pin connected to MS6205 display "set character" pin 16B
-/// \param[in]  clearAllPin            CPU pin connected to MS6205 display "clear" pin 18A
+/// \param[in]  clearPin               CPU pin connected to MS6205 display "clear" pin 18A
 //--------------------------------------------------------------
-MS6205::MS6205(int shiftRegisterLatchPin, int shiftRegisterClockPin, int shiftRegisterDataPin, int setCursorPin, int setCharacterPin, int clearAllPin)
+MS6205::MS6205(int shiftRegisterLatchPin, int shiftRegisterClockPin, int shiftRegisterDataPin, int setCursorPin, int setCharacterPin, int clearPin)
 {
   _shiftRegisterLatchPin = shiftRegisterLatchPin;
   _shiftRegisterClockPin = shiftRegisterClockPin;
   _shiftRegisterDataPin = shiftRegisterDataPin;
   _setCursorPin = setCursorPin;
   _setCharacterPin = setCharacterPin;
-  _clearAllPin = clearAllPin;
+  _clearPin = clearPin;
   
   // --- Set shift register pins to output mode ---
   pinMode(_shiftRegisterLatchPin, OUTPUT);
@@ -123,8 +123,12 @@ MS6205::MS6205(int shiftRegisterLatchPin, int shiftRegisterClockPin, int shiftRe
   
   // --- Set display pins to output mode ---
   pinMode(_setCursorPin, OUTPUT);
-  pinMode(_setCharacterPin, OUTPUT);
-  pinMode(_clearAllPin, OUTPUT);
+  pinMode(_setCharacterPin, OUTPUT);  
+  pinMode(_clearPin, OUTPUT);
+  
+  digitalWrite(_setCursorPin, HIGH);
+  digitalWrite(_setCharacterPin, HIGH);
+  digitalWrite(_clearPin, HIGH);
   
   _showCursorPin = 0;
   _pagingEnabled = false;
@@ -323,9 +327,9 @@ void MS6205::writeBlock(int column, int row)
 //--------------------------------------------------------------
 void MS6205::clear(void)
 {
-  digitalWrite(_clearAllPin, LOW);                              // Pull "Clear All" control line low to clear everything
+  digitalWrite(_clearPin, LOW);                                 // Pull "Clear" control line low to clear everything
   delay(CLEAR_ALL_HOLD_TIME_US);                                // Hold for proper delay
-  digitalWrite(_clearAllPin, HIGH);                             // Pull "Clear All" control line high
+  digitalWrite(_clearPin, HIGH);                                // Pull "Clear" control line high
 } // clear()
 
 //--------------------------------------------------------------

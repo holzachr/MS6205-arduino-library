@@ -244,9 +244,9 @@ class MS6205
     /// \param[in]  shiftRegisterDataPin   CPU pin connected to 74HC595 shift register "data" pin 14
     /// \param[in]  setCursorPin           CPU pin connected to MS6205 display "set cursor" pin 16A
     /// \param[in]  setCharacterPin        CPU pin connected to MS6205 display "set character" pin 16B
-    /// \param[in]  clearAllPin            CPU pin connected to MS6205 display "clear" pin 18A
+    /// \param[in]  clearPin               CPU pin connected to MS6205 display "clear" pin 18A
     //--------------------------------------------------------------
-    MS6205(int shiftRegisterLatchPin, int shiftRegisterClockPin, int shiftRegisterDataPin, int setCursorPin, int setCharacterPin, int clearAllPin);
+    MS6205(int shiftRegisterLatchPin, int shiftRegisterClockPin, int shiftRegisterDataPin, int setCursorPin, int setCharacterPin, int clearPin);
         
     //--------------------------------------------------------------
     /// \brief Set cursor
@@ -401,7 +401,7 @@ class MS6205
     int _shiftRegisterDataPin;      // CPU pin connected to 74HC595 pin 14
     int _setCursorPin;              // CPU pin connected to MS6205 pin 16A
     int _setCharacterPin;           // CPU pin connected to MS6205 pin 16B
-    int _clearAllPin;               // CPU pin connected to MS6205 pin 18A
+    int _clearPin;                  // CPU pin connected to MS6205 pin 18A
     int _selectPage0Pin;            // CPU pin connected to MS6205 pin 2A
     int _selectPage1Pin;            // CPU pin connected to MS6205 pin 2B
     int _showCursorPin;             // CPU pin connected to MS6205 pin 8A
