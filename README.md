@@ -1,5 +1,7 @@
 # MS6205-arduino-library
 An Arduino library for accessing the functions of an "Elektronika MS6205" vintage soviet multi-line character display with parallel data and address buses.
+This library is currently tested with a NodeMCU v3 module, featuring the ESP8266 microcontroller.
+It should work with other Arduinos as well, but is currently untested.
 
 ## ABOUT THE DISPLAY
 The "Elektronika MS6205" display is a multi-line cold-cathode-tube display with internal high-voltage generation.
