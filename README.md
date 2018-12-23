@@ -1,5 +1,7 @@
 # MS6205-arduino-library
 An Arduino library for accessing the functions of an "Elektronika MS6205" vintage soviet multi-line character display with parallel data and address buses.
+This library is currently tested with a NodeMCU v3 module, featuring the ESP8266 microcontroller.
+It should work with other Arduinos as well, but is currently untested.
 
 ## ABOUT THE DISPLAY
 The "Elektronika MS6205" display is a multi-line cold-cathode-tube display with internal high-voltage generation.
@@ -37,7 +39,7 @@ If control line 8A is high, a black box is shown.
 ## PAGING (optional)
 MS6205 supports up to 4 pages.                                                                            
 Writing is always done to the current (visible) page. You cannot fill pages invisibly in background.      
-After filling, the pages remain defined (until redefined) and can be selected randomly.                   
+After filling, the pages remain defined, until redefined, and can be selected randomly.                   
 Pages are selected by inverted control lines 2A and 2B, which have pull-ups.                              
                                                                                                               
        2A  |  2B  | Page                                                                                      
@@ -47,10 +49,10 @@ Pages are selected by inverted control lines 2A and 2B, which have pull-ups.
       HIGH | LOW  | 2                                                                                         
       LOW  | LOW  | 3                                                                                         
                                                                                                               
-1. First select a first page to write to                                                                  
+1. Select a first page to write to                                                                  
 2. Optionally clear it                                                                                    
 3. Write to page                                                                                          
-4. Select next page. Visible output changes, but page from step 1. remains in MS6205 memory               
+4. Select next page. Visible output changes, but page from steps 1-3 remains in MS6205 memory               
 5. Optionally clear it                                                                                    
 6. Write to next page                                                                                     
 7. Now you can toggle between the two defined pages                                                       
@@ -122,7 +124,7 @@ For this reason, control from a +3.3 V ESP8266 module works fine, even with the 
     
 The bits on data bus are inverted. So to write an 'F', send hex 0x39 instead of usually 0x46.
     
-The lower bits 1-4 on address bus indicate the column (0-15), the upper bits 5-8 address the row (0-9.
+The lower bits 1-4 on address bus indicate the column (0-15), the upper bits 5-8 address the row (0-9).
 
     +-----+------------------------------------------------------------------------------------------------------+
     | Pin | Signal               | Description                                                                   |
@@ -181,5 +183,5 @@ The lower bits 1-4 on address bus indicate the column (0-15), the upper bits 5-8
     | 31A | GND for +12 V        | Connect to GND                                                                |
     | 31B | GND for +12 V        | Connect to GND                                                                |
     | 32A | GND for +12 V        | Connect to GND                                                                |
-    | 32B | GND for +12 V        | Connect to GND                                                                |                 
+    | 32B | GND for +12 V        | Connect to GND                                                                |
     +-----+----------------------+-------------------------------------------------------------------------------+
