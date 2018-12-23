@@ -413,4 +413,6 @@ class MS6205
     void writeAddress(int address);
 };
 
+#include <MS6205_scroll.h>
+
 #endif // MS6205_H
