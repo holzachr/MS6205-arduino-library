@@ -47,9 +47,31 @@ scrollText::scrollText(int startColumn, int startRow, int endColumn, int endRow,
   _text = text;                                          // Text to display
   _textLength = text.length();                           // Text length
   _delayTime = delayTime;                                // [ms] Delay between scrolling to the next state
+  
+  if (startColumn >= (NUMBER_OF_COLUMNS - 1))
+    startColumn = NUMBER_OF_COLUMNS - 1;
+  
+  if (startRow >= (NUMBER_OF_ROWS - 1))
+    startRow = NUMBER_OF_ROWS - 1;
+  
+  if (endColumn >= (NUMBER_OF_COLUMNS - 1))
+    endColumn = NUMBER_OF_COLUMNS - 1;
+  
+  if (endRow >= (NUMBER_OF_ROWS - 1))
+    endRow = NUMBER_OF_ROWS - 1;  
+  
   _areaStart = (startColumn & 0x0F) | (startRow << 4);   // [position] Address of first character to show scrolling at
   int areaEnd = (endColumn & 0x0F) | (endRow << 4);      // [position] Address of last character to show scrolling at
-  _areaLength = (areaEnd - _areaStart + 1);              // [characters] Length of area to display scrolling at
+  
+  if (areaEnd > _areaStart)                              // If valid area defined:
+  {
+    _areaLength = (areaEnd - _areaStart + 1);            // [characters] Length of area to display scrolling at
+  }
+  else                                                   // Invalid area defined:
+  {
+    _areaLength = 1;                                     // Show only one character at start position, to indicate something's wrong
+  }
+  
   _state = _areaLength + _textLength;                    // State of scrolling
   _enabled = true;                                       // Enabled/disabled scrolling
   _pDisplay = pDisplay;                                  // Pointer to display to show scrolling on
@@ -130,8 +152,12 @@ void scrollText::clearArea(void)
   {
     spaces += " "; 
   }
-  _pDisplay->setCursor(column, row);
-  _pDisplay->write(spaces);
+  
+  if (_pDisplay != NULL)
+  {
+    _pDisplay->setCursor(column, row);
+    _pDisplay->write(spaces);
+  }
 } // clearArea()
 
 
